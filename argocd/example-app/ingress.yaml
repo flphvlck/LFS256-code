@@ -1,8 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  annotations:
-    ingress.cilium.io/loadbalancer-mode: shared
+#  annotations:
+#    ingress.cilium.io/loadbalancer-mode: shared
   name: example-app
   namespace: default
 spec:

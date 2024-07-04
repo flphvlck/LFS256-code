@@ -4,7 +4,6 @@ metadata:
 #  annotations:
 #    ingress.cilium.io/loadbalancer-mode: shared
   name: example-app
-  namespace: default
 spec:
   rules:
   - host: example-app.argocd.test

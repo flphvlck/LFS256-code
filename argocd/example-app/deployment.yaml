@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: argocd-example-app
 spec:
-  replicas: 1 # You can adjust the number of replicas
+  replicas: 2 # You can adjust the number of replicas
   selector:
     matchLabels:
       app: argocd-example-app
@@ -17,3 +17,21 @@ spec:
         image: quay.io/filiphavlicek/k8s-debug:nonroot
         ports:
         - containerPort: 8080 # Assuming your app runs on port 3000
+        env:
+        - name: KUBERNETES_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - argocd-example-app
+              topologyKey: kubernetes.io/hostname
+            weight: 100

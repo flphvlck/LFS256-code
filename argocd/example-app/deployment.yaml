@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: argocd-example-app
-        image: quay.io/filiphavlicek/k8s-debug:nonroot
+        image: flphvlck/k8s-debug:nonroot
         ports:
         - containerPort: 8080 # Assuming your app runs on port 3000
         env:

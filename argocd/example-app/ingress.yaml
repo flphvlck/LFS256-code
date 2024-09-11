@@ -6,7 +6,7 @@ metadata:
   name: example-app
 spec:
   rules:
-  - host: example-app.argocd.test
+  - host: example-app.lab.hvlck.xyz
     http:
       paths:
       - backend:
